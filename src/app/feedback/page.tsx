@@ -2,6 +2,11 @@
 
 import { useState } from "react";
 
+const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+const FORMSPREE_URL = FORMSPREE_ID && FORMSPREE_ID !== "placeholder"
+  ? `https://formspree.io/f/${FORMSPREE_ID}`
+  : null;
+
 const feedbackTypes = [
   { id: "writing", label: "写作相关（周报、邮件、文章）", icon: "✍️" },
   { id: "image", label: "绘图相关（AI画图、设计）", icon: "🎨" },
@@ -24,11 +29,39 @@ export default function FeedbackPage() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // 这里暂时只做前端模拟
-    // 实际部署后可以接入表单服务
-    setSubmitted(true);
+    if (!selectedType || !description) return;
+
+    // 如果没有配置 Formspree，模拟提交
+    if (!FORMSPREE_URL) {
+      setSubmitted(true);
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: feedbackTypes.find((t) => t.id === selectedType)?.label,
+          description,
+          email: email || "未提供",
+        }),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        alert("提交失败，请稍后重试");
+      }
+    } catch {
+      alert("网络错误，请稍后重试");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -116,10 +149,10 @@ export default function FeedbackPage() {
         {/* 提交按钮 */}
         <button
           type="submit"
-          disabled={!selectedType || !description}
+          disabled={!selectedType || !description || submitting}
           className="w-full py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          提交反馈
+          {submitting ? "提交中..." : "提交反馈"}
         </button>
       </form>
 

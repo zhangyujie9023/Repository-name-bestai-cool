@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
+import GoogleAnalytics from "./google-analytics";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -20,6 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
+      <GoogleAnalytics />
       <body className={`${geistSans.variable} min-h-screen bg-background`}>
         {/* 顶部导航 */}
         <header className="border-b border-border bg-white sticky top-0 z-50">
@@ -73,6 +76,7 @@ export default function RootLayout({
             </div>
           </div>
         </footer>
+        <Analytics />
       </body>
     </html>
   );
