@@ -1,0 +1,13 @@
+Tutorial ID               |  Chars |    CN | Status | Title
+-----------------------------------------------------------------------------------------------
+writing                   |   9288 |  5804 | [OK ] ChatGPT 入门：从注册到第一次对话
+kimi-intro                |   8658 |  5372 | [OK ] Kimi 入门：能读懂文件的中国版ChatGPT
+ai-write-report           |   9973 |  6162 | [OK ] 用AI帮你写周报、总结、邮件
+doubao-intro              |   6069 |  3749 | [OK ] 豆包入门：字节跳动的免费AI助手
+tongyi-draw               |   8059 |  5053 | [OK ] 通义万相：免费AI画图工具
+midjourney-intro          |  11117 |  4197 | [OK ] Midjourney 入门：专业级AI画图
+wps-ai                    |   7980 |  4144 | [OK ] WPS AI：一键生成PPT和文档
+gamma-ai                  |   5002 |  2626 | [OK ] Gamma：AI自动生成PPT
+jianying-ai               |   5535 |  3257 | [OK ] 剪映AI：文字一键生成视频
+ai-translate              |   5320 |  3158 | [OK ] AI翻译：比翻译软件更准确
+ai-summary                |   5345 |  3250 | [OK ] AI总结：快速读懂长文章
