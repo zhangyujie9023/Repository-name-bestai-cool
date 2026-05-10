@@ -27,7 +27,14 @@ export default function FeedbackPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedType || !description) return;
+    if (!selectedType) {
+      alert("请先选择一个反馈类型");
+      return;
+    }
+    if (!description.trim()) {
+      alert("请填写详细描述");
+      return;
+    }
 
     setSubmitting(true);
     try {
