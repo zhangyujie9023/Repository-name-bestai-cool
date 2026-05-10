@@ -1,65 +1,140 @@
-import Image from "next/image";
+import Link from "next/link";
+import { tutorials, categories, faqs } from "@/data/tutorials";
 
 export default function Home() {
+  const popularTutorials = tutorials.filter((t) => t.popular);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="max-w-5xl mx-auto px-4 py-8">
+      {/* Hero区域 */}
+      <section className="text-center py-12 md:py-20">
+        <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          🤖 零基础学AI
+        </h1>
+        <p className="text-lg text-muted-foreground mb-2">
+          从"不知道AI是什么"到"能用AI帮你干活"
+        </p>
+        <p className="text-sm text-muted-foreground mb-8">
+          免费教程 · 中文界面 · 适合电脑小白
+        </p>
+        <div className="flex justify-center gap-4">
+          <Link
+            href="/tutorials"
+            className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            开始学习
+          </Link>
+          <Link
+            href="/feedback"
+            className="px-6 py-3 border border-border rounded-lg font-medium text-foreground hover:bg-muted transition-colors"
           >
-            Documentation
-          </a>
+            我有问题想问
+          </Link>
         </div>
-      </main>
+      </section>
+
+      {/* 热门教程 */}
+      <section className="py-8">
+        <h2 className="text-xl font-semibold text-foreground mb-6">📚 热门教程</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {popularTutorials.map((tutorial) => (
+            <Link
+              key={tutorial.id}
+              href={`/tutorials/${tutorial.id}`}
+              className="tutorial-card p-5 bg-white border border-border rounded-xl hover:border-primary/30"
+            >
+              <div className="flex items-start gap-3">
+                <span className="text-2xl">
+                  {categories.find((c) => c.id === tutorial.category)?.icon}
+                </span>
+                <div className="flex-1">
+                  <h3 className="font-medium text-foreground mb-1">{tutorial.title}</h3>
+                  <p className="text-sm text-muted-foreground line-clamp-2">
+                    {tutorial.description}
+                  </p>
+                  <div className="flex items-center gap-3 mt-2 text-xs text-muted-foreground">
+                    <span>{"⭐".repeat(tutorial.difficulty)}</span>
+                    <span>{tutorial.duration}</span>
+                    {tutorial.free && (
+                      <span className="text-green-600">免费</span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+        <Link
+          href="/tutorials"
+          className="inline-block mt-4 text-sm text-primary hover:underline"
+        >
+          查看全部教程 →
+        </Link>
+      </section>
+
+      {/* 分类导航 */}
+      <section className="py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-6">📂 按场景学习</h2>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+          {categories.map((cat) => (
+            <Link
+              key={cat.id}
+              href={`/tutorials?category=${cat.id}`}
+              className="p-4 bg-white border border-border rounded-xl text-center hover:border-primary/30 transition-colors"
+            >
+              <span className="text-2xl block mb-2">{cat.icon}</span>
+              <span className="font-medium text-foreground">{cat.name}</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* 常见问题 */}
+      <section className="py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-6">❓ 新手最常问的问题</h2>
+        <div className="space-y-3">
+          {faqs[0].items.slice(0, 4).map((faq, idx) => (
+            <Link
+              key={idx}
+              href="/faq"
+              className="block p-4 bg-white border border-border rounded-lg hover:border-primary/30 transition-colors"
+            >
+              <span className="text-foreground">{faq.q}</span>
+            </Link>
+          ))}
+        </div>
+        <Link
+          href="/faq"
+          className="inline-block mt-4 text-sm text-primary hover:underline"
+        >
+          查看全部问题 →
+        </Link>
+      </section>
+
+      {/* 反馈展示 */}
+      <section className="py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-6">💬 用户反馈</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="feedback-card p-4 rounded-lg">
+            <p className="text-sm text-foreground">"想学怎么用AI帮我写工作总结"</p>
+            <p className="text-xs text-muted-foreground mt-2">— 张先生</p>
+          </div>
+          <div className="feedback-card p-4 rounded-lg">
+            <p className="text-sm text-foreground">"能不能出个用AI做PPT的教程？"</p>
+            <p className="text-xs text-muted-foreground mt-2">— 李女士</p>
+          </div>
+          <div className="feedback-card p-4 rounded-lg">
+            <p className="text-sm text-foreground">"我想学AI画画，但不知道从哪开始"</p>
+            <p className="text-xs text-muted-foreground mt-2">— 小王</p>
+          </div>
+        </div>
+        <Link
+          href="/feedback"
+          className="inline-block mt-4 text-sm text-primary hover:underline"
+        >
+          我也想提需求 →
+        </Link>
+      </section>
     </div>
   );
 }
