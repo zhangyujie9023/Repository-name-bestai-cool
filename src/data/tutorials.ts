@@ -58,13 +58,6 @@ export const tutorials: Tutorial[] = [
     free: true,
     tags: ["写作", "周报", "效率"],
     popular: true,
-    title: "用AI帮你写周报、总结、邮件",
-    description: "教你用AI快速生成工作文档，节省每天1小时",
-    category: "writing",
-    difficulty: 2,
-    duration: "15分钟",
-    free: true,
-    tags: ["写作", "周报", "效率"],
   },
   {
     id: "doubao-intro",
@@ -76,6 +69,7 @@ export const tutorials: Tutorial[] = [
     free: true,
     tags: ["豆包", "免费", "入门"],
     popular: true,
+  },
 
   // 图像生成
   {
