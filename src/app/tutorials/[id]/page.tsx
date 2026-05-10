@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import FeedbackButtons from "@/components/FeedbackButtons";
 import { getTutorialById, tutorials, categories } from "@/data/tutorials";
 
 interface Props {
@@ -156,25 +157,7 @@ export default async function TutorialPage({ params }: Props) {
       </article>
 
       {/* 底部反馈 */}
-      <div className="mt-12 p-6 bg-muted rounded-xl">
-        <p className="font-medium text-foreground mb-4">
-          🎉 这个教程对你有帮助吗？
-        </p>
-        <div className="flex gap-4">
-          <button className="px-4 py-2 bg-white border border-border rounded-lg hover:bg-gray-50 transition-colors">
-            👍 有帮助
-          </button>
-          <button className="px-4 py-2 bg-white border border-border rounded-lg hover:bg-gray-50 transition-colors">
-            👎 没帮助
-          </button>
-          <Link
-            href="/feedback"
-            className="px-4 py-2 bg-white border border-border rounded-lg hover:bg-gray-50 transition-colors"
-          >
-            💬 我有疑问
-          </Link>
-        </div>
-      </div>
+      <FeedbackButtons tutorialId={tutorial.id} tutorialTitle={tutorial.title} />
 
       {/* 相关教程 */}
       <div className="mt-8">

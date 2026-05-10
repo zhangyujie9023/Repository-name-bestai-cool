@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 
 const feedbackTypes = [
   { id: "writing", label: "写作相关（周报、邮件、文章）", icon: "✍️" },
@@ -18,12 +19,35 @@ const recentFeedback = [
   { text: "想学用AI写工作周报", count: 10 },
 ];
 
-export default function FeedbackPage() {
+function FeedbackContent() {
+  const searchParams = useSearchParams();
+  const tutorialId = searchParams.get("tutorial");
+  const tutorialTitle = searchParams.get("title");
+
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [description, setDescription] = useState("");
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+
+  // 如果有教程参数，预填描述
+  useEffect(() => {
+    if (tutorialTitle) {
+      setDescription(`关于【${tutorialTitle}】我有疑问：`);
+    } else if (tutorialId) {
+      try {
+        const storedFeedbacks = localStorage.getItem("tutorial_feedbacks");
+        if (storedFeedbacks) {
+          const feedbacks = JSON.parse(storedFeedbacks);
+          if (feedbacks[tutorialId]?.tutorialTitle) {
+            setDescription(`关于【${feedbacks[tutorialId].tutorialTitle}】我有疑问：`);
+          }
+        }
+      } catch {
+        // ignore
+      }
+    }
+  }, [tutorialId, tutorialTitle]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -172,5 +196,13 @@ export default function FeedbackPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function FeedbackPage() {
+  return (
+    <Suspense fallback={<div className="max-w-2xl mx-auto px-4 py-8 text-center text-muted-foreground">加载中...</div>}>
+      <FeedbackContent />
+    </Suspense>
   );
 }
