@@ -2,11 +2,6 @@
 
 import { useState } from "react";
 
-const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
-const FORMSPREE_URL = FORMSPREE_ID && FORMSPREE_ID !== "placeholder"
-  ? `https://formspree.io/f/${FORMSPREE_ID}`
-  : null;
-
 const feedbackTypes = [
   { id: "writing", label: "写作相关（周报、邮件、文章）", icon: "✍️" },
   { id: "image", label: "绘图相关（AI画图、设计）", icon: "🎨" },
@@ -28,22 +23,15 @@ export default function FeedbackPage() {
   const [description, setDescription] = useState("");
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
-
   const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedType || !description) return;
 
-    // 如果没有配置 Formspree，模拟提交
-    if (!FORMSPREE_URL) {
-      setSubmitted(true);
-      return;
-    }
-
     setSubmitting(true);
     try {
-      const res = await fetch(FORMSPREE_URL, {
+      const res = await fetch("/api/feedback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -52,10 +40,11 @@ export default function FeedbackPage() {
           email: email || "未提供",
         }),
       });
+      const data = await res.json();
       if (res.ok) {
         setSubmitted(true);
       } else {
-        alert("提交失败，请稍后重试");
+        alert(data.error || "提交失败，请稍后重试");
       }
     } catch {
       alert("网络错误，请稍后重试");
