@@ -19,16 +19,62 @@ export default function Home() {
         </p>
         <div className="flex justify-center gap-4">
           <Link
-            href="/tutorials"
+            href="/tutorials/chatgpt-intro"
             className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity"
           >
-            开始学习
+            🚀 新手从这里开始
           </Link>
           <Link
-            href="/feedback"
+            href="/tutorials"
             className="px-6 py-3 border border-border rounded-lg font-medium text-foreground hover:bg-muted transition-colors"
           >
-            我有问题想问
+            📚 全部教程
+          </Link>
+        </div>
+      </section>
+
+      {/* 新手3步入门 */}
+      <section className="py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-6">🗺️ 新手入门路线</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <Link
+            href="/tutorials/chatgpt-intro"
+            className="p-5 bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 rounded-xl hover:border-primary/30 transition-colors"
+          >
+            <div className="flex items-center gap-2 mb-2">
+              <span className="bg-primary text-white text-sm font-bold w-7 h-7 rounded-full flex items-center justify-center">1</span>
+              <span className="font-medium text-foreground">学会跟AI对话</span>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              先注册一个 ChatGPT 或 Kimi 账号，学会最基本的AI对话技巧
+            </p>
+            <span className="text-xs text-primary mt-2 inline-block">ChatGPT 入门 →</span>
+          </Link>
+          <Link
+            href="/tutorials/ai-write-report"
+            className="p-5 bg-gradient-to-br from-green-50 to-emerald-50 border border-green-100 rounded-xl hover:border-primary/30 transition-colors"
+          >
+            <div className="flex items-center gap-2 mb-2">
+              <span className="bg-green-600 text-white text-sm font-bold w-7 h-7 rounded-full flex items-center justify-center">2</span>
+              <span className="font-medium text-foreground">让AI帮你干活</span>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              学会用AI写周报、邮件、总结，每天省下1小时
+            </p>
+            <span className="text-xs text-green-600 mt-2 inline-block">AI写周报教程 →</span>
+          </Link>
+          <Link
+            href="/tutorials/tongyi-draw"
+            className="p-5 bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-100 rounded-xl hover:border-primary/30 transition-colors"
+          >
+            <div className="flex items-center gap-2 mb-2">
+              <span className="bg-purple-600 text-white text-sm font-bold w-7 h-7 rounded-full flex items-center justify-center">3</span>
+              <span className="font-medium text-foreground">探索更多AI能力</span>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              试试AI画图、做PPT、剪辑视频，发现AI的更多可能
+            </p>
+            <span className="text-xs text-purple-600 mt-2 inline-block">AI画图教程 →</span>
           </Link>
         </div>
       </section>

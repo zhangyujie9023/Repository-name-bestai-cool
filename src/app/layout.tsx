@@ -10,9 +10,37 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://bestai.cool"),
   title: "AI学习站 - 零基础学AI，从入门到实用",
   description: "帮助电脑小白学会使用AI工具。ChatGPT、Kimi、通义万相等热门AI工具详细教程，按场景分类，从注册到实战一步一步教你。",
   keywords: "AI教程, ChatGPT教程, AI入门, AI学习, 人工智能教程, Kimi教程, AI工具使用",
+  openGraph: {
+    title: "AI学习站 - 零基础学AI",
+    description: "帮助电脑小白学会使用AI工具，免费教程，中文界面，适合新手",
+    url: "https://bestai.cool",
+    siteName: "AI学习站",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "AI学习站 - 零基础学AI",
+      },
+    ],
+    locale: "zh_CN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI学习站 - 零基础学AI",
+    description: "帮助电脑小白学会使用AI工具，免费教程，中文界面",
+    images: ["/og-image.png"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -35,6 +63,7 @@ export default function RootLayout({
               <a href="/" className="text-muted-foreground hover:text-foreground transition-colors">首页</a>
               <a href="/tutorials" className="text-muted-foreground hover:text-foreground transition-colors">教程</a>
               <a href="/faq" className="text-muted-foreground hover:text-foreground transition-colors">常见问题</a>
+              <a href="/about" className="text-muted-foreground hover:text-foreground transition-colors">关于</a>
               <a href="/feedback" className="text-muted-foreground hover:text-foreground transition-colors">反馈</a>
             </nav>
           </div>
@@ -48,7 +77,7 @@ export default function RootLayout({
         {/* 底部 */}
         <footer className="border-t border-border bg-white mt-12">
           <div className="max-w-5xl mx-auto px-4 py-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div>
                 <h3 className="font-semibold text-foreground mb-3">🤖 AI学习站</h3>
                 <p className="text-sm text-muted-foreground">
@@ -68,6 +97,13 @@ export default function RootLayout({
                 <ul className="text-sm text-muted-foreground space-y-2">
                   <li><a href="/faq" className="hover:text-foreground">常见问题</a></li>
                   <li><a href="/feedback" className="hover:text-foreground">提交反馈</a></li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-semibold text-foreground mb-3">关于网站</h3>
+                <ul className="text-sm text-muted-foreground space-y-2">
+                  <li><a href="/about" className="hover:text-foreground">关于我们</a></li>
+                  <li><a href="/privacy" className="hover:text-foreground">隐私政策</a></li>
                 </ul>
               </div>
             </div>
