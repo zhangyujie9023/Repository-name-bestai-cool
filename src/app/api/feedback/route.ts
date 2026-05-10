@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
       const errText = await res.text();
       console.error("[Feedback] GitHub API error:", res.status, errText);
       return NextResponse.json(
-        { error: "提交失败，请稍后重试" },
+        { error: `GitHub API 错误 (${res.status}): ${errText}` },
         { status: 500 }
       );
     }
@@ -66,9 +66,10 @@ export async function POST(req: NextRequest) {
     const issueData = await res.json();
     return NextResponse.json({ ok: true, issueUrl: issueData.html_url });
   } catch (err) {
-    console.error("[Feedback] Error:", err);
+    const errMsg = err instanceof Error ? err.message : String(err);
+    console.error("[Feedback] Error:", errMsg);
     return NextResponse.json(
-      { error: "服务器错误，请稍后重试" },
+      { error: `服务器错误: ${errMsg}` },
       { status: 500 }
     );
   }
