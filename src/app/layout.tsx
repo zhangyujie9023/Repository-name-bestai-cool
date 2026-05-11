@@ -81,6 +81,7 @@ export default function RootLayout({
             </a>
             <nav className="hidden md:flex items-center gap-6 text-sm">
               <a href="/" className="text-muted-foreground hover:text-foreground transition-colors">首页</a>
+              <a href="/tools" className="text-muted-foreground hover:text-foreground transition-colors font-medium">🛠️ 工具导航</a>
               <a href="/tutorials" className="text-muted-foreground hover:text-foreground transition-colors">教程</a>
               <a href="/faq" className="text-muted-foreground hover:text-foreground transition-colors">常见问题</a>
               <a href="/about" className="text-muted-foreground hover:text-foreground transition-colors">关于</a>

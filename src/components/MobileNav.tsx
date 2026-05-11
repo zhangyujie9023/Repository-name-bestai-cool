@@ -16,8 +16,9 @@ export default function MobileNav() {
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
-  const navLinks = [
+  const navLinks: { href: string; label: string; highlight?: boolean }[] = [
     { href: "/", label: "首页" },
+    { href: "/tools", label: "🛠️ 工具导航", highlight: true },
     { href: "/tutorials", label: "教程" },
     { href: "/faq", label: "常见问题" },
     { href: "/about", label: "关于" },
@@ -72,7 +73,11 @@ export default function MobileNav() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="block px-4 py-3 rounded-lg text-foreground hover:bg-muted transition-colors font-medium"
+                className={`block px-4 py-3 rounded-lg transition-colors font-medium ${
+                  link.highlight
+                    ? "bg-primary/10 text-primary hover:bg-primary/20"
+                    : "text-foreground hover:bg-muted"
+                }`}
               >
                 {link.label}
               </Link>

@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { tutorials, categories, faqs } from "@/data/tutorials";
+import { getHighlightTools } from "@/data/tools";
 
 export default function Home() {
   const popularTutorials = tutorials.filter((t) => t.popular);
+  const highlightTools = getHighlightTools();
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
@@ -17,18 +19,97 @@ export default function Home() {
         <p className="text-sm text-muted-foreground mb-8">
           免费教程 · 中文界面 · 适合电脑小白
         </p>
-        <div className="flex justify-center gap-4">
+        <div className="flex justify-center gap-4 flex-wrap">
           <Link
-            href="/tutorials/chatgpt-intro"
+            href="/tools"
             className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity"
           >
-            🚀 新手从这里开始
+            🛠️ 查看AI工具导航
           </Link>
           <Link
-            href="/tutorials"
+            href="/tutorials/chatgpt-intro"
             className="px-6 py-3 border border-border rounded-lg font-medium text-foreground hover:bg-muted transition-colors"
           >
-            📚 全部教程
+            📚 从教程开始
+          </Link>
+        </div>
+      </section>
+
+      {/* 精选工具导航 */}
+      <section className="py-8 border-t border-border">
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-xl font-semibold text-foreground">🛠️ 精选AI工具</h2>
+          <Link href="/tools" className="text-sm text-primary hover:underline">
+            查看全部{highlightTools.length + 20}+ 工具 →
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {highlightTools.map((tool) => (
+            <a
+              key={tool.id}
+              href={tool.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-4 bg-card border border-border rounded-xl hover:border-primary/40 transition-all group"
+            >
+              <div className="flex items-start gap-3">
+                <span className="text-2xl shrink-0">{tool.logo}</span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="font-medium text-foreground text-sm group-hover:text-primary transition-colors">
+                      {tool.name}
+                    </span>
+                    {tool.isDomestic && (
+                      <span className="text-xs bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 px-1.5 py-0.5 rounded shrink-0">
+                        🇨🇳 国内免费
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
+                    {tool.shortDesc}
+                  </p>
+                  <div className="flex items-center gap-2 mt-2">
+                    <span className="text-xs text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                      打开官网 ↗
+                    </span>
+                    {tool.tutorialId && (
+                      <Link
+                        href={`/tutorials/${tool.tutorialId}`}
+                        className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        📖 教程
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+        <div className="mt-4 flex gap-3 flex-wrap">
+          <Link
+            href="/tools"
+            className="px-5 py-2.5 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
+          >
+            🛠️ 访问工具导航
+          </Link>
+          <Link
+            href="/tools?category=writing"
+            className="px-4 py-2.5 border border-border rounded-lg text-sm text-foreground hover:bg-muted transition-colors"
+          >
+            ✍️ 写作工具
+          </Link>
+          <Link
+            href="/tools?category=image"
+            className="px-4 py-2.5 border border-border rounded-lg text-sm text-foreground hover:bg-muted transition-colors"
+          >
+            🎨 图像工具
+          </Link>
+          <Link
+            href="/tools?category=video"
+            className="px-4 py-2.5 border border-border rounded-lg text-sm text-foreground hover:bg-muted transition-colors"
+          >
+            🎬 视频工具
           </Link>
         </div>
       </section>
