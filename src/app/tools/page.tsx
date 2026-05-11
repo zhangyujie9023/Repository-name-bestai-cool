@@ -8,6 +8,9 @@ export default function ToolsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [expandedTool, setExpandedTool] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
+  // 新增筛选状态
+  const [filterFree, setFilterFree] = useState(false);
+  const [filterDomestic, setFilterDomestic] = useState(false);
 
   const filteredTools = tools.filter((t) => {
     const matchCategory = !selectedCategory || t.category === selectedCategory;
@@ -15,7 +18,10 @@ export default function ToolsPage() {
       t.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       t.shortDesc.toLowerCase().includes(searchQuery.toLowerCase()) ||
       t.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchCategory && matchSearch;
+    // 新增筛选条件
+    const matchFree = !filterFree || t.price === "免费" || t.price === "开源免费";
+    const matchDomestic = !filterDomestic || t.isDomestic;
+    return matchCategory && matchSearch && matchFree && matchDomestic;
   });
 
   const toggleExpand = (id: string) => {
@@ -57,6 +63,28 @@ export default function ToolsPage() {
             找到 {filteredTools.length} 个相关工具
           </p>
         )}
+      </div>
+
+      {/* 新增筛选栏 */}
+      <div className="flex flex-wrap gap-4 mb-4 items-center">
+        <label className="flex items-center gap-2 text-sm text-muted-foreground cursor-pointer hover:text-foreground transition-colors">
+          <input 
+            type="checkbox" 
+            checked={filterFree} 
+            onChange={(e) => setFilterFree(e.target.checked)}
+            className="rounded border-border text-primary focus:ring-primary/30"
+          />
+          仅看免费工具
+        </label>
+        <label className="flex items-center gap-2 text-sm text-muted-foreground cursor-pointer hover:text-foreground transition-colors">
+          <input 
+            type="checkbox" 
+            checked={filterDomestic} 
+            onChange={(e) => setFilterDomestic(e.target.checked)}
+            className="rounded border-border text-primary focus:ring-primary/30"
+          />
+          仅国内可用
+        </label>
       </div>
 
       {/* 分类Tab切换 */}
@@ -104,7 +132,7 @@ export default function ToolsPage() {
         {filteredTools.length === 0 && (
           <div className="text-center py-16 text-muted-foreground">
             <p className="text-4xl mb-3">🔍</p>
-            <p>该分类下暂无工具</p>
+            <p>没有找到符合条件的工具</p>
           </div>
         )}
       </div>
@@ -192,7 +220,7 @@ function ToolCard({ tool, expanded, onToggle }: { tool: AITool; expanded: boolea
                   href={tool.playStoreUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-2 text-sm bg-[#1DB954] text-white rounded-xl hover:opacity-80 transition-opacity font-medium shadow-sm"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 text-sm bg-[#1DB954] text-white rounded-xl hover:opacity-80 transition-opacity font-medium shadow-sm"
                 >
                   🤖 Google Play
                 </a>
@@ -215,7 +243,7 @@ function ToolCard({ tool, expanded, onToggle }: { tool: AITool; expanded: boolea
       {expanded && (
         <div className="px-5 pb-5 border-t border-border bg-gradient-to-b from-muted/10 to-muted/5">
           <div className="pt-4">
-            <h4 className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
+            <h4 className="text-sm font-semibold text-foreground mb-4 flex items gap-2">
               <span className="text-lg">📋</span> 使用步骤
             </h4>
             <ol className="space-y-3">
