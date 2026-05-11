@@ -30,6 +30,12 @@ export const toolCategories = [
   { id: "dev", name: "开发工具", icon: "💻", description: "编程、代码、搭建网站" },
   { id: "design", name: "设计Logo", icon: "🎯", description: "品牌设计、Logo生成" },
   { id: "productivity", name: "效率工具", icon: "⚡", description: "搜索、表格、语音转文字" },
+  { id: "mindmap", name: "思维导图", icon: "🎟", description: "AI生成脑图、结构化思考" },
+  { id: "data", name: "数据分析", icon: "📊", description: "表格处理、数据可视化" },
+  { id: "3d", name: "3D建模", icon: "🎨", description: "AI生成3D模型、场景" },
+  { id: "privacy", name: "隐私安全", icon: "🔒", description: "密码管理、安全上网" },
+  { id: "lifestyle", name: "生活养乐", icon: "👻", description: "AI陪伴、游戏娱乐" },
+  { id: "education", name: "教育学习", icon: "🎓", description: "AI辅助学习、知识获取" },
 ];
 
 export const tools: AITool[] = [
@@ -1428,6 +1434,481 @@ export const tools: AITool[] = [
     isDomestic: true,
     tags: ["简历优化", "求职", "AI分析"]
   },
+
+  // ========== 思维导图 ==========
+  {
+    id: "gitmind",
+    name: "GitMind",
+    website: "https://gitmind.cn",
+    logo: "🎯",
+    category: "mindmap",
+    shortDesc: "免费在线思维导图工具，支持AI一键生成脑图、流程图，多人协作。无需下载，注册即用。",
+    howToUse: [
+      "打开gitmind.cn，点击「免费创作」",
+      "选择思维导图模板或空白画布",
+      "输入中心主题，AI自动生成分支",
+      "双击节点添加内容，支持插入图片",
+      "导出PNG/PDF，或生成链接分享"
+    ],
+    price: "免费",
+    isDomestic: true,
+    tags: [
+      "思维导图",
+      "AI生成",
+      "在线协作"
+    ]
+  },
+  {
+    id: "xmind-ai",
+    name: "XMind AI",
+    website: "https://xmind.cn",
+    logo: "💫",
+    category: "mindmap",
+    shortDesc: "专业思维导图工具，新增AI助手功能，输入主题自动生成完整导图框架。",
+    howToUse: [
+      "下载XMind或打开网页版",
+      "输入导图主题描述",
+      "点击AI生成，获取导图大纲",
+      "手动调整节点和层级",
+      "导出多种格式（PNG/SVG/PDF/Markdown）"
+    ],
+    price: "免费",
+    isDomestic: true,
+    tags: [
+      "思维导图",
+      "AI辅助",
+      "专业工具"
+    ]
+  },
+  {
+    id: "amymind",
+    name: "AmyMind",
+    website: "https://amymind.com",
+    logo: "🧠",
+    category: "mindmap",
+    shortDesc: "轻量级免费思维导图，AI帮你快速搭建框架，支持Markdown格式导出。",
+    howToUse: [
+      "打开amymind.com，免费使用",
+      "输入主题关键词",
+      "AI生成导图结构",
+      "编辑节点，添加子主题",
+      "导出为PNG/Markdown"
+    ],
+    price: "免费",
+    isDomestic: true,
+    tags: [
+      "思维导图",
+      "轻量",
+      "Markdown导出"
+    ]
+  },
+
+  // ========== 数据分析 ==========
+  {
+    id: "chubiao",
+    name: "酷表",
+    website: "https://chubao.io",
+    logo: "📊",
+    category: "data",
+    shortDesc: "AI驱动的在线表格工具，用自然语言告诉它你想做什么，数据分析无需公式。",
+    howToUse: [
+      "打开chubao.io，上传Excel或新建表格",
+      "用中文描述你想做的分析",
+      "AI自动生成公式和图表",
+      "一键生成数据透视表",
+      "导出Excel或生成可视化报告"
+    ],
+    price: "免费",
+    isDomestic: true,
+    tags: [
+      "数据分析",
+      "表格",
+      "AI公式"
+    ]
+  },
+  {
+    id: "sheetplus",
+    name: "Sheet+",
+    website: "https://sheetplus.ai",
+    logo: "📁",
+    category: "data",
+    shortDesc: "AI Excel和Google Sheets插件，写公式、生成图表、分析数据，一句话搞定。",
+    howToUse: [
+      "安装Sheet+ Chrome插件或注册网页版",
+      "打开Excel/Google Sheets",
+      "描述你想要的计算结果",
+      "AI生成对应公式，点击插入",
+      "支持数据清洗和可视化"
+    ],
+    price: "部分免费",
+    isDomestic: false,
+    tags: [
+      "Excel",
+      "公式生成",
+      "数据处理"
+    ]
+  },
+  {
+    id: "beautiful-ai",
+    name: "Beautiful.ai",
+    website: "https://www.beautiful.ai",
+    logo: "📈",
+    category: "data",
+    shortDesc: "AI自动设计演示文稿，导入数据自动生成专业图表幻灯片，数据汇报必备。",
+    howToUse: [
+      "注册beautiful.ai账号",
+      "选择图表类型或粘贴数据",
+      "AI自动美化并生成图表",
+      "修改文字和布局",
+      "一键导出PPTX或在线演示"
+    ],
+    price: "部分免费",
+    isDomestic: false,
+    tags: [
+      "演示文稿",
+      "图表",
+      "数据可视化"
+    ]
+  },
+
+  // ========== 3D建模 ==========
+  {
+    id: "spline-ai",
+    name: "Spline AI",
+    website: "https://spline.design",
+    logo: "🎨",
+    category: "3d",
+    shortDesc: "AI在线3D建模工具，用文字描述就能生成3D场景、物体和材质，支持实时渲染。",
+    howToUse: [
+      "打开spline.design，点击Start Free",
+      "输入3D场景描述",
+      "AI生成3D模型，可直接在浏览器中编辑",
+      "调整材质、光照、动画",
+      "导出OBJ/GLB格式"
+    ],
+    price: "免费",
+    isDomestic: false,
+    tags: [
+      "3D建模",
+      "AI生成",
+      "实时渲染"
+    ]
+  },
+  {
+    id: "meshy",
+    name: "Meshy",
+    website: "https://meshy.ai",
+    logo: "🎭",
+    category: "3d",
+    shortDesc: "AI将2D图片或文字描述转换为高质量3D模型，支持纹理和风格化渲染。",
+    howToUse: [
+      "打开meshy.ai，注册免费账号",
+      "上传图片或输入文字描述",
+      "选择渲染模式（快速/精细）",
+      "等待AI生成3D模型",
+      "下载GLB文件或在线预览"
+    ],
+    price: "部分免费",
+    isDomestic: false,
+    tags: [
+      "2D转3D",
+      "纹理生成",
+      "AI建模"
+    ]
+  },
+  {
+    id: "tripo3d",
+    name: "Tripo3D",
+    website: "https://tripo3d.ai",
+    logo: "🎧",
+    category: "3d",
+    shortDesc: "文字或图片生成3D模型，几秒内获得可编辑的3D资产，适合游戏和设计。",
+    howToUse: [
+      "打开tripo3d.ai",
+      "输入描述或上传图片",
+      "选择模型质量和风格",
+      "AI生成3D模型（10-30秒）",
+      "在线编辑或下载FBX/OBJ"
+    ],
+    price: "部分免费",
+    isDomestic: false,
+    tags: [
+      "3D生成",
+      "游戏资产",
+      "AI建模"
+    ]
+  },
+  {
+    id: "csm3d",
+    name: "CSM",
+    website: "https://csm.ai",
+    logo: "💻",
+    category: "3d",
+    shortDesc: "开源AI 3D建模平台，支持图片生成3D、视频生成3D，API免费调用。",
+    howToUse: [
+      "打开csm.ai，注册免费账号",
+      "上传图片或输入描述词",
+      "选择输出格式和质量",
+      "生成3D模型（通常1-2分钟）",
+      "下载或集成到游戏引擎"
+    ],
+    price: "免费",
+    isDomestic: false,
+    tags: [
+      "开源",
+      "3D生成",
+      "API"
+    ]
+  },
+
+  // ========== 隐私安全 ==========
+  {
+    id: "bitwarden",
+    name: "Bitwarden",
+    website: "https://bitwarden.com",
+    logo: "🔒",
+    category: "privacy",
+    shortDesc: "开源密码管理器，AI帮你生成强密码、安全存储、自动填充，支持全平台同步。",
+    howToUse: [
+      "下载Bitwarden客户端或安装浏览器插件",
+      "注册账号，设置主密码",
+      "AI密码生成器创建强密码",
+      "网站登录时自动填充",
+      "跨设备同步（手机/电脑/平板）"
+    ],
+    price: "免费",
+    isDomestic: false,
+    tags: [
+      "密码管理",
+      "开源",
+      "全平台"
+    ]
+  },
+  {
+    id: "proton",
+    name: "Proton",
+    website: "https://proton.me",
+    logo: "🛡",
+    category: "privacy",
+    shortDesc: "瑞士隐私保护套件：邮箱、密码管理、VPN、云盘、日历，端到端加密。",
+    howToUse: [
+      "打开proton.me注册免费账号",
+      "使用Proton Mail收发加密邮件",
+      "用Proton Pass管理密码",
+      "开启VPN保护网络连接",
+      "使用Proton Drive存储文件"
+    ],
+    price: "免费",
+    isDomestic: false,
+    tags: [
+      "隐私邮箱",
+      "VPN",
+      "加密云盘"
+    ]
+  },
+
+  // ========== 生活娱乐 ==========
+  {
+    id: "character-ai",
+    name: "Character.AI",
+    website: "https://character.ai",
+    logo: "👻",
+    category: "lifestyle",
+    shortDesc: "和AI角色对话、娱乐聊天、创意写作练习，支持创建自己的AI角色。",
+    howToUse: [
+      "打开character.ai",
+      "搜索喜欢的角色",
+      "开始对话，AI角色会即时回复",
+      "点击Create创建自己的AI角色",
+      "设置角色性格、头像和开场白"
+    ],
+    price: "免费",
+    isDomestic: false,
+    tags: [
+      "角色对话",
+      "娱乐",
+      "创意"
+    ]
+  },
+  {
+    id: "replika",
+    name: "Replika",
+    website: "https://replika.com",
+    logo: "🤖",
+    category: "lifestyle",
+    shortDesc: "AI陪伴聊天机器人，创建你的专属AI朋友，支持视频通话和AR互动。",
+    howToUse: [
+      "下载Replika应用（iOS/Android）",
+      "创建你的AI伙伴，选择性别和形象",
+      "与AI聊天，分享日常生活",
+      "开启AR模式进行视频通话",
+      "解锁更多关系类型"
+    ],
+    price: "部分免费",
+    isDomestic: false,
+    tags: [
+      "AI陪伴",
+      "心理健康",
+      "AR互动"
+    ]
+  },
+  {
+    id: "hailuo-ai",
+    name: "海螺AI",
+    website: "https://hailuoai.video",
+    logo: "💎",
+    category: "lifestyle",
+    shortDesc: "AI语音对话应用，支持中文语音聊天、角色扮演、知识问答，手机即可使用。",
+    howToUse: [
+      "打开hailuoai.video或下载APP",
+      "选择对话场景",
+      "按住说话，AI语音回复",
+      "支持多种角色和话题",
+      "生成对话记录和摘要"
+    ],
+    price: "部分免费",
+    isDomestic: true,
+    tags: [
+      "语音对话",
+      "角色扮演",
+      "中文AI"
+    ]
+  },
+
+  // ========== 教育学习 ==========
+  {
+    id: "duolingo",
+    name: "Duolingo",
+    website: "https://www.duolingo.com",
+    logo: "🇺🇸",
+    category: "education",
+    shortDesc: "全球最流行的AI外语学习APP，游戏化学习，支持40+语言，每天10分钟轻松学。",
+    howToUse: [
+      "下载Duolingo APP",
+      "选择想学的语言",
+      "每天完成5-10分钟闯关任务",
+      "AI调整难度，个性化推荐练习",
+      "参加每周联赛，和全球用户竞争"
+    ],
+    price: "免费",
+    isDomestic: false,
+    tags: [
+      "外语学习",
+      "游戏化",
+      "40+语言"
+    ]
+  },
+  {
+    id: "netEase-open",
+    name: "网易公开课",
+    website: "https://open.163.com",
+    logo: "📚",
+    category: "education",
+    shortDesc: "国内知名MOOC平台，汇集全球顶尖大学课程，AI字幕翻译，中文学习无障碍。",
+    howToUse: [
+      "打开open.163.com",
+      "搜索感兴趣的名校课程",
+      "观看带AI字幕的视频课程",
+      "完成课后练习和测验",
+      "获取课程完成证书"
+    ],
+    price: "免费",
+    isDomestic: true,
+    tags: [
+      "MOOC",
+      "名校课程",
+      "AI字幕"
+    ]
+  },
+  {
+    id: "xuersi",
+    name: "学而思网校",
+    website: "https://www.xueersi.com",
+    logo: "🎓",
+    category: "education",
+    shortDesc: "AI辅助K12全科学习，拍照解题、智能批改、个性化学习路径，国内学生首选。",
+    howToUse: [
+      "打开学而思网校APP或网页",
+      "选择年级和科目",
+      "拍照上传题目，AI即时解答",
+      "观看配套讲解视频",
+      "AI生成个性化练习题"
+    ],
+    price: "部分免费",
+    isDomestic: true,
+    tags: [
+      "K12",
+      "拍照解题",
+      "AI批改"
+    ]
+  },
+  {
+    id: "khan-academy",
+    name: "可汗学院",
+    website: "https://www.khanacademy.org",
+    logo: "🏳",
+    category: "education",
+    shortDesc: "美国非营利教育平台，K-12全科覆盖，AI助教Khanmigo免费使用，名师讲解视频。",
+    howToUse: [
+      "打开khanacademy.org，注册免费账号",
+      "选择年级和科目开始学习",
+      "观看讲解视频，完成练习题",
+      "体验AI助教Khanmigo（一对一辅导）",
+      "跟踪学习进度，查漏补缺"
+    ],
+    price: "免费",
+    isDomestic: false,
+    tags: [
+      "K12",
+      "AI助教",
+      "全科"
+    ]
+  },
+  {
+    id: "coursera",
+    name: "Coursera",
+    website: "https://www.coursera.org",
+    logo: "🎓",
+    category: "education",
+    shortDesc: "全球最大MOOC平台，汇聚200+顶尖大学课程，AI辅助学习，可获权威证书。",
+    howToUse: [
+      "打开coursera.org，注册免费账号",
+      "搜索并报名感兴趣的专业课程",
+      "观看视频+做作业+参加讨论",
+      "使用AI学习助手答疑",
+      "通过考试获得结业证书"
+    ],
+    price: "部分免费",
+    isDomestic: false,
+    tags: [
+      "MOOC",
+      "名校证书",
+      "AI辅助"
+    ]
+  },
+  {
+    id: "edx",
+    name: "edX",
+    website: "https://www.edx.org",
+    logo: "🌍",
+    category: "education",
+    shortDesc: "MIT和哈佛联合创办的MOOC平台，提供全球顶级大学课程，AI分析学习数据。",
+    howToUse: [
+      "打开edx.org，选择课程",
+      "注册账号，可以旁听（免费）或付费拿证书",
+      "按进度完成视频和作业",
+      "AI分析薄弱环节，推荐复习内容",
+      "获取证书或学分抵免"
+    ],
+    price: "部分免费",
+    isDomestic: false,
+    tags: [
+      "MOOC",
+      "MIT哈佛",
+      "学分"
+    ]
+  },
+
 ];
 
 
