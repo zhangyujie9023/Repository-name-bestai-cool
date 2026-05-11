@@ -1,21 +1,34 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import { tutorials, categories, type Tutorial } from "@/data/tutorials";
+import { getTutorialById } from "@/data/tutorials";
 
 export default function TutorialsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredTutorials = tutorials.filter((t) => {
-    const matchCategory = !selectedCategory || t.category === selectedCategory;
-    const matchSearch =
-      !searchQuery ||
-      t.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      t.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchCategory && matchSearch;
-  });
+  const filteredTutorials = useMemo(() => {
+    return tutorials.filter((t) => {
+      const matchCategory = !selectedCategory || t.category === selectedCategory;
+      if (!matchCategory) return false;
+
+      if (!searchQuery) return true;
+      
+      const q = searchQuery.toLowerCase();
+      // 搜索标题、描述、标签
+      if (t.title.toLowerCase().includes(q)) return true;
+      if (t.description.toLowerCase().includes(q)) return true;
+      if (t.tags.some(tag => tag.toLowerCase().includes(q))) return true;
+      
+      // 搜索正文内容
+      const detail = getTutorialById(t.id);
+      if (detail && detail.content && detail.content.toLowerCase().includes(q)) return true;
+      
+      return false;
+    });
+  }, [selectedCategory, searchQuery]);
 
   const difficultyText = (d: number) => ["", "入门", "进阶", "高级"][d];
 
@@ -25,13 +38,21 @@ export default function TutorialsPage() {
 
       {/* 搜索 */}
       <div className="mb-6">
-        <input
-          type="text"
-          placeholder="搜索教程..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full md:w-80 px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20"
-        />
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="🔍 搜索教程名称、标签或正文内容..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full md:w-96 px-4 py-2.5 pl-10 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 bg-white dark:bg-card text-foreground"
+          />
+          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">🔍</span>
+        </div>
+        {searchQuery && (
+          <p className="mt-2 text-sm text-muted-foreground">
+            找到 {filteredTutorials.length} 个匹配的教程
+          </p>
+        )}
       </div>
 
       {/* 分类筛选 */}
@@ -84,7 +105,9 @@ export default function TutorialsPage() {
 
         {filteredTutorials.length === 0 && (
           <div className="text-center py-12 text-muted-foreground">
-            没有找到匹配的教程
+            <p className="text-3xl mb-3">🔍</p>
+            <p>没有找到匹配的教程</p>
+            <p className="text-sm mt-1">试试其他关键词</p>
           </div>
         )}
       </div>
@@ -98,7 +121,7 @@ function TutorialCard({ tutorial }: { tutorial: Tutorial }) {
   return (
     <Link
       href={`/tutorials/${tutorial.id}`}
-      className="tutorial-card block p-4 bg-white border border-border rounded-xl hover:border-primary/30"
+      className="tutorial-card block p-4 bg-card border border-border rounded-xl hover:border-primary/30 dark:hover:border-primary/50"
     >
       <div className="flex items-start justify-between">
         <div className="flex-1">
@@ -116,7 +139,7 @@ function TutorialCard({ tutorial }: { tutorial: Tutorial }) {
             )}
           </div>
         </div>
-        <span className="text-primary text-sm ml-4">学习 →</span>
+        <span className="primary text-sm ml-4 shrink-0">学习 →</span>
       </div>
     </Link>
   );

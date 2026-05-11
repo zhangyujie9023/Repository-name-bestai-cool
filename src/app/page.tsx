@@ -87,7 +87,7 @@ export default function Home() {
             <Link
               key={tutorial.id}
               href={`/tutorials/${tutorial.id}`}
-              className="tutorial-card p-5 bg-white border border-border rounded-xl hover:border-primary/30"
+              className="tutorial-card p-5 bg-card border border-border rounded-xl hover:border-primary/30 dark:hover:border-primary/50"
             >
               <div className="flex items-start gap-3">
                 <span className="text-2xl">
@@ -143,7 +143,7 @@ export default function Home() {
             <Link
               key={idx}
               href="/faq"
-              className="block p-4 bg-white border border-border rounded-lg hover:border-primary/30 transition-colors"
+              className="block p-4 bg-card border border-border rounded-lg hover:border-primary/30 transition-colors"
             >
               <span className="text-foreground">{faq.q}</span>
             </Link>

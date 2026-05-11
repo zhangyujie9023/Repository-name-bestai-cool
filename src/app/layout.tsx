@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import GoogleAnalytics from "./google-analytics";
+import JsonLd from "@/components/JsonLd";
+import ThemeToggle from "@/components/ThemeToggle";
+import MobileNav from "@/components/MobileNav";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -43,6 +46,22 @@ export const metadata: Metadata = {
   },
 };
 
+// 网站级 JSON-LD 数据
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "AI学习站",
+  url: "https://bestai.cool",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: "https://bestai.cool/tutorials?q={search_term_string}",
+    },
+    "query-input": "required name=search_term_string",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -51,21 +70,26 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <GoogleAnalytics />
+      <JsonLd data={websiteJsonLd} />
       <body className={`${geistSans.variable} min-h-screen bg-background`}>
         {/* 顶部导航 */}
-        <header className="border-b border-border bg-white sticky top-0 z-50">
+        <header className="border-b border-border bg-white dark:bg-[#111] sticky top-0 z-50">
           <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
             <a href="/" className="text-lg font-bold text-foreground flex items-center gap-2">
               <span className="text-2xl">🤖</span>
               <span>AI学习站</span>
             </a>
-            <nav className="flex items-center gap-6 text-sm">
+            <nav className="hidden md:flex items-center gap-6 text-sm">
               <a href="/" className="text-muted-foreground hover:text-foreground transition-colors">首页</a>
               <a href="/tutorials" className="text-muted-foreground hover:text-foreground transition-colors">教程</a>
               <a href="/faq" className="text-muted-foreground hover:text-foreground transition-colors">常见问题</a>
               <a href="/about" className="text-muted-foreground hover:text-foreground transition-colors">关于</a>
               <a href="/feedback" className="text-muted-foreground hover:text-foreground transition-colors">反馈</a>
+              <ThemeToggle />
             </nav>
+            <div className="flex items-center gap-2 md:gap-0">
+              <MobileNav />
+            </div>
           </div>
         </header>
 
@@ -75,7 +99,7 @@ export default function RootLayout({
         </main>
 
         {/* 底部 */}
-        <footer className="border-t border-border bg-white mt-12">
+        <footer className="border-t border-border bg-white dark:bg-[#111] mt-12">
           <div className="max-w-5xl mx-auto px-4 py-8">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div>
