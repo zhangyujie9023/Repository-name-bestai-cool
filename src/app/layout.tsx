@@ -84,6 +84,7 @@ export default function RootLayout({
               <a href="/tools" className="text-muted-foreground hover:text-foreground transition-colors font-medium">🛠️ 工具导航</a>
               <a href="/tutorials" className="text-muted-foreground hover:text-foreground transition-colors">教程</a>
               <a href="/faq" className="text-muted-foreground hover:text-foreground transition-colors">常见问题</a>
+              <a href="/docs" className="text-muted-foreground hover:text-foreground transition-colors">搭建指南</a>
               <a href="/about" className="text-muted-foreground hover:text-foreground transition-colors">关于</a>
               <a href="/feedback" className="text-muted-foreground hover:text-foreground transition-colors">反馈</a>
               <ThemeToggle />
@@ -128,6 +129,7 @@ export default function RootLayout({
                 <h3 className="font-semibold text-foreground mb-3">关于网站</h3>
                 <ul className="text-sm text-muted-foreground space-y-2">
                   <li><a href="/about" className="hover:text-foreground">关于我们</a></li>
+                  <li><a href="/docs" className="hover:text-foreground">搭建指南</a></li>
                   <li><a href="/privacy" className="hover:text-foreground">隐私政策</a></li>
                 </ul>
               </div>

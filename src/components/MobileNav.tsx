@@ -21,6 +21,7 @@ export default function MobileNav() {
     { href: "/tools", label: "🛠️ 工具导航", highlight: true },
     { href: "/tutorials", label: "教程" },
     { href: "/faq", label: "常见问题" },
+    { href: "/docs", label: "搭建指南" },
     { href: "/about", label: "关于" },
     { href: "/feedback", label: "反馈" },
   ];

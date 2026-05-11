@@ -257,6 +257,12 @@ export default async function TutorialPage({ params }: Props) {
         </div>
       </header>
 
+      {/* 简明简介（放在最前面） */}
+      <div className="mb-8 p-5 bg-primary/5 border border-primary/20 rounded-xl">
+        <h2 className="text-sm font-semibold text-primary mb-2">📖 简介</h2>
+        <p className="text-foreground leading-relaxed">{tutorial.description}</p>
+      </div>
+
       {/* 教程内容 */}
       <article className="prose prose-zinc max-w-none">
         {renderContent(tutorial.content)}

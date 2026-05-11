@@ -712,7 +712,724 @@ export const tools: AITool[] = [
     isDomestic: false,
     tags: ["会议记录", "录音转文字", "实时"]
   },
+
+  // ========== 效率工具-自动化 ==========
+  {
+    id: "n8n",
+    name: "n8n",
+    website: "https://n8n.io",
+    downloadUrl: "https://n8n.io/download",
+    logo: "🔗",
+    category: "productivity",
+    shortDesc: "免费开源的工作流自动化工具，把各种APP串联起来自动执行任务。比Zapier便宜，适合想把重复工作自动化的用户。",
+    howToUse: [
+      "方式一：在线使用 n8n.cloud（无需安装）",
+      "方式二：在自己电脑上安装（需要Docker或Node.js）",
+      "拖拽节点，连接不同APP（如：收到邮件→自动存到表格）",
+      "设置触发条件，自动化运行",
+      "内置AI节点，支持GPT等大模型"
+    ],
+    price: "开源免费",
+    isDomestic: false,
+    tags: ["自动化", "工作流", "开源免费", "API"]
+  },
+  {
+    id: "make",
+    name: "Make（原Integromat）",
+    website: "https://www.make.com",
+    logo: "⚙️",
+    category: "productivity",
+    shortDesc: "可视化工作流自动化平台，把不同APP串联起来自动完成任务。免费版每月1000次操作，够个人用户日常使用。",
+    howToUse: [
+      "注册账号（可用Gmail或邮箱）",
+      "点击「Create a new scenario」创建自动化流程",
+      "拖拽APP图标到画布，连接它们",
+      "设置触发条件和操作步骤",
+      "打开开关启用自动化"
+    ],
+    price: "部分免费",
+    isDomestic: false,
+    tags: ["自动化", "工作流", "无代码"]
+  },
+  {
+    id: "biling",
+    name: "秘言",
+    website: "https://biling.cn",
+    downloadUrl: "https://biling.cn",
+    logo: "📧",
+    category: "productivity",
+    shortDesc: "国产AI邮件助手，输入需求自动生成专业邮件。支持中英文，适合职场人士写商务邮件。",
+    howToUse: [
+      "打开网站，用手机号注册",
+      "选择邮件类型（商务/求职/客户跟进等）",
+      "输入邮件要点，AI自动生成完整邮件",
+      "可调整语气和长度",
+      "复制邮件内容到邮箱发送"
+    ],
+    price: "部分免费",
+    isDomestic: true,
+    tags: ["邮件", "商务", "国产"]
+  },
+  {
+    id: "flomo",
+    name: "flomo",
+    website: "https://flomoapp.com",
+    downloadUrl: "https://flomoapp.com/download",
+    appStoreUrl: "https://apps.apple.com/app/flomo/id1558288496",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.flomoapp",
+    logo: "📝",
+    category: "productivity",
+    shortDesc: "卡片式笔记工具，AI帮你整理和回顾笔记。碎片化记录，大脑式整理，适合知识管理。",
+    howToUse: [
+      "下载APP或打开网页版，免费注册",
+      "随时记录想法、灵感、读书笔记",
+      "打标签分类（#工作 #学习 #灵感）",
+      "AI每日回顾，帮助你复习重要内容",
+      "支持多设备同步"
+    ],
+    price: "部分免费",
+    isDomestic: true,
+    tags: ["笔记", "知识管理", "手机可用"]
+  },
+  {
+    id: "raycast-alternatives",
+    name: "Raycast",
+    website: "https://www.raycast.com",
+    downloadUrl: "https://www.raycast.com/install",
+    logo: "🚀",
+    category: "productivity",
+    shortDesc: "Mac效率神器，输入快捷命令完成各种操作。比Spotlight强大10倍，支持AI搜索、AI写作、窗口管理。程序员和设计师必备。",
+    howToUse: [
+      "在Mac上下载安装Raycast（免费基础版）",
+      "按 Option+Space 调出搜索框",
+      "输入命令快速完成操作：计算器、查汇率、搜文件",
+      "安装AI扩展：用自然语言处理文件",
+      "管理剪贴板历史、窗口布局"
+    ],
+    price: "部分免费",
+    isDomestic: false,
+    tags: ["效率", "Mac", "快捷键"]
+  },
+
+  // ========== 学术研究 ==========
+  {
+    id: "consensus",
+    name: "Consensus",
+    website: "https://consensus.app",
+    logo: "📚",
+    category: "productivity",
+    shortDesc: "AI学术搜索引擎，输入问题，直接给你科研论文答案。论文经过同行评审，科学可信。写论文、做研究必备。",
+    howToUse: [
+      "打开consensus.app，注册账号（可用Google）",
+      "用英文输入你的研究问题",
+      "AI搜索数亿篇学术论文",
+      "直接给出答案和引用来源",
+      "点击论文标题查看摘要和下载链接"
+    ],
+    price: "部分免费",
+    isDomestic: false,
+    tags: ["学术", "论文", "AI搜索", "英文"]
+  },
+  {
+    id: "connectedpapers",
+    name: "Connected Papers",
+    website: "https://www.connectedpapers.com",
+    logo: "🕸️",
+    category: "productivity",
+    shortDesc: "输入一篇论文，可视化显示与之相关的所有论文网络图。找文献、追踪研究脉络神器。完全免费。",
+    howToUse: [
+      "打开connectedpapers.com",
+      "粘贴论文标题或DOI",
+      "查看论文关系图谱（颜色深浅=引用数量）",
+      "点击任意节点跳转到该论文",
+      "点击「Prior works」查看前驱论文，或「Derivative works」查看后续研究"
+    ],
+    price: "免费",
+    isDomestic: false,
+    tags: ["学术", "论文关系图", "文献调研"]
+  },
+  {
+    id: "scispace",
+    name: "SciSpace（原Typeset）",
+    website: "https://scispace.com",
+    logo: "🔬",
+    category: "productivity",
+    shortDesc: "AI论文阅读助手，上传PDF或输入链接，AI用简单语言解释论文内容。选中文回答，专为非科研人员设计。",
+    howToUse: [
+      "注册SciSpace账号（可用邮箱或Google）",
+      "上传PDF或粘贴论文URL",
+      "用中文向AI提问：这篇文章讲了什么？",
+      "AI用通俗语言解释，支持追问",
+      "highlight文字让AI详细解释"
+    ],
+    price: "部分免费",
+    isDomestic: false,
+    tags: ["学术", "论文解读", "AI辅助阅读"]
+  },
+
+  // ========== 图像生成-更多 ==========
+  {
+    id: "bing-image-creator",
+    name: "Bing Image Creator",
+    website: "https://www.bing.com/images/create",
+    logo: "🖼️",
+    category: "image",
+    shortDesc: "微软必应出品，基于DALL·E 3，完全免费使用。中英文均可，生成质量高，速度快。无需注册直接用。",
+    howToUse: [
+      "打开bing.com/images/create（用微软账号登录）",
+      "输入图片描述（中英文均可）",
+      "DALL·E 3自动生成4张图片",
+      "点击放大或下载",
+      "免费用户每天有积分限制，约15次生成"
+    ],
+    price: "免费",
+    isDomestic: false,
+    tags: ["AI画图", "DALL-E", "免费", "微软"]
+  },
+  {
+    id: "looka",
+    name: "Looka",
+    website: "https://looka.com",
+    logo: "🎯",
+    category: "design",
+    shortDesc: "AI Logo设计工具，输入品牌名和风格偏好，AI生成100+个Logo方案。选好后可下载全套品牌素材。",
+    howToUse: [
+      "打开looka.com，输入品牌名称",
+      "选择喜欢的Logo风格（简约/现代/复古等）",
+      "选择颜色偏好",
+      "AI生成100+个Logo方案",
+      "选中喜欢的，可下载PNG/SVG格式及品牌指南"
+    ],
+    price: "部分免费",
+    isDomestic: false,
+    tags: ["Logo设计", "品牌设计", "AI生成"]
+  },
+  {
+    id: "adobe-express",
+    name: "Adobe Express",
+    website: "https://www.adobe.com/express/",
+    downloadUrl: "https://www.adobe.com/express/download",
+    appStoreUrl: "https://apps.apple.com/app/adobe-express-video-editor/id1494462761",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.adobe.spark.post",
+    logo: "🎨",
+    category: "image",
+    shortDesc: "Adobe出品的免费在线设计工具，做海报、Logo、社交图片、PPT。模板超多，AI辅助设计，零基础也能做出专业图。",
+    howToUse: [
+      "打开adobe.com/express，注册免费账号",
+      "选择设计类型：海报/Logo/社交图片等",
+      "挑选模板，AI帮你修改内容",
+      "输入文字，AI自动排版",
+      "完成后下载PNG/PDF格式"
+    ],
+    price: "免费",
+    isDomestic: false,
+    tags: ["设计", "海报", "模板", "Adobe"]
+  },
+  {
+    id: "microsoft-designer",
+    name: "Microsoft Designer",
+    website: "https://designer.microsoft.com",
+    downloadUrl: "https://www.microsoft.com/designer",
+    logo: "✏️",
+    category: "image",
+    shortDesc: "微软出品的免费在线设计工具，输入文字描述，AI自动生成社交媒体图片、海报、邀请函。支持中文。",
+    howToUse: [
+      "用微软账号登录designer.microsoft.com",
+      "点击「用AI创建设计」",
+      "输入图片描述（中英文均可）",
+      "AI生成多个设计方案",
+      "选择一个后在线编辑，导出图片"
+    ],
+    price: "免费",
+    isDomestic: false,
+    tags: ["设计", "海报", "AI生成", "微软"]
+  },
+  {
+    id: "recraft",
+    name: "Recraft",
+    website: "https://www.recraft.ai",
+    logo: "🖌️",
+    category: "image",
+    shortDesc: "免费AI设计工具，专门生成矢量插画、图标、Logo。支持多种风格（写实、扁平、3D），生成的图片可商用。",
+    howToUse: [
+      "打开recraft.ai，注册账号（可用Google）",
+      "选择图片类型：插画/图标/Logo/真实图片",
+      "输入英文描述，选择风格",
+      "AI生成多张图片",
+      "下载SVG/PNG格式，可商用"
+    ],
+    price: "部分免费",
+    isDomestic: false,
+    tags: ["矢量图", "图标", "Logo", "商用免费"]
+  },
+
+  // ========== 视频制作-更多 ==========
+  {
+    id: "heygen",
+    name: "HeyGen",
+    website: "https://www.heygen.com",
+    logo: "🎭",
+    category: "video",
+    shortDesc: "输入文字，AI生成虚拟数字人视频。支持中文，数字人播报、带货、教学视频一键生成。免费生成5分钟视频。",
+    howToUse: [
+      "注册HeyGen账号（可用Gmail）",
+      "选择数字人模板或上传自己的照片",
+      "输入要播报的文案（支持中文）",
+      "选择语言和声音",
+      "等待生成视频，下载MP4"
+    ],
+    price: "部分免费",
+    isDomestic: false,
+    tags: ["数字人", "AI视频", "虚拟主播"]
+  },
+  {
+    id: "synthesia",
+    name: "Synthesia",
+    website: "https://www.synthesia.io",
+    logo: "🎙️",
+    category: "video",
+    shortDesc: "AI数字人视频平台，140+种数字人可选，输入文字生成AI主播视频。企业培训、宣传视频首选。免费试用。",
+    howToUse: [
+      "注册Synthesia账号",
+      "选择数字人形象和语言",
+      "输入视频脚本",
+      "预览并生成视频",
+      "下载或直接嵌入网站"
+    ],
+    price: "付费",
+    isDomestic: false,
+    tags: ["数字人", "AI视频", "企业培训"]
+  },
+  {
+    id: "veed",
+    name: "VEED",
+    website: "https://www.veed.io",
+    logo: "🎬",
+    category: "video",
+    shortDesc: "在线AI视频编辑器，上传视频后AI自动添加字幕、剪辑、去除背景。浏览器里完成，无需下载软件。",
+    howToUse: [
+      "打开veed.io，注册免费账号",
+      "上传视频文件（拖拽即可）",
+      "点击「Auto Subtitles」AI自动加字幕",
+      "可用AI消除背景噪音",
+      "裁剪、添加文字、背景音乐",
+      "完成后直接导出下载"
+    ],
+    price: "部分免费",
+    isDomestic: false,
+    tags: ["视频剪辑", "字幕", "在线编辑"]
+  },
+  {
+    id: "d-id",
+    name: "D-ID",
+    website: "https://www.d-id.com",
+    logo: "🎞️",
+    category: "video",
+    shortDesc: "上传照片，AI让照片里的人说话。输入文字或上传音频，照片变成会说话的视频。适合做数字纪念、创意视频。",
+    howToUse: [
+      "打开d-id.com，注册账号",
+      "上传一张人物照片",
+      "输入要说的文字或上传音频",
+      "选择声音和语言",
+      "生成视频后下载MP4"
+    ],
+    price: "部分免费",
+    isDomestic: false,
+    tags: ["数字人", "照片说话", "AI视频"]
+  },
+
+  // ========== 音频处理-更多 ==========
+  {
+    id: "suno",
+    name: "Suno",
+    website: "https://suno.ai",
+    logo: "🎵",
+    category: "audio",
+    shortDesc: "全球最火的AI音乐生成器，输入文字描述想要的歌曲风格和内容，AI生成完整歌曲（含歌词+演唱）。完全免费，中文歌也能生成。",
+    howToUse: [
+      "用Discord账号或Google账号登录suno.ai",
+      "点击「Create」创建新歌曲",
+      "输入歌曲描述（音乐风格+主题+语言）",
+      "也可以点击「Custom Mode」输入自己的歌词",
+      "等待3分钟，AI生成两首完整歌曲",
+      "点击播放试听，下载音频文件"
+    ],
+    price: "免费",
+    isDomestic: false,
+    highlight: true,
+    tags: ["AI作曲", "歌曲生成", "完全免费", "中文歌曲"]
+  },
+  {
+    id: "elevenlabs",
+    name: "ElevenLabs",
+    website: "https://elevenlabs.io",
+    logo: "🎙️",
+    category: "audio",
+    shortDesc: "AI语音合成工具，克隆声音、生成逼真人声、支持29种语言。做播客、视频配音、有声书的利器。免费试用。",
+    howToUse: [
+      "注册ElevenLabs账号",
+      "在「Voice Library」选择AI声音",
+      "粘贴文字，选择语言",
+      "调整语速、音调",
+      "生成音频并下载MP3"
+    ],
+    price: "部分免费",
+    isDomestic: false,
+    tags: ["语音合成", "配音", "文字转语音"]
+  },
+  {
+    id: "ttsmaker",
+    name: "TTSMaker",
+    website: "https://ttsmaker.com",
+    logo: "🔊",
+    category: "audio",
+    shortDesc: "免费文字转语音工具，支持中文和50+种语言。输入文字，选择声音风格，立即生成音频文件。无需注册。",
+    howToUse: [
+      "打开ttsmaker.com，无需注册直接用",
+      "输入要转语音的文字",
+      "选择语言和声音风格（男声/女声/童声）",
+      "调整语速和音调",
+      "点击「Convert」生成，下载MP3/WAV"
+    ],
+    price: "免费",
+    isDomestic: false,
+    tags: ["文字转语音", "免费", "配音", "多语言"]
+  },
+  {
+    id: "udio",
+    name: "Udio",
+    website: "https://www.udio.com",
+    logo: "🎶",
+    category: "audio",
+    shortDesc: "新兴AI音乐生成工具，和Suno类似，完全免费。生成高质量音乐，支持多种风格，适合做视频BGM。",
+    howToUse: [
+      "打开udio.com，用Gmail注册",
+      "点击「Generate」创作音乐",
+      "输入音乐风格和主题描述",
+      "AI生成完整歌曲",
+      "下载音频，可用于视频BGM"
+    ],
+    price: "免费",
+    isDomestic: false,
+    tags: ["AI作曲", "音乐生成", "BGM", "免费"]
+  },
+
+  // ========== AI搜索-更多 ==========
+  {
+    id: "kimi-search",
+    name: "Kimi智能搜索",
+    website: "https://kimi.moonshot.cn",
+    downloadUrl: "https://kimi.moonshot.cn",
+    appStoreUrl: "https://apps.apple.com/app/id6677418498",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.moonshot.kimi",
+    logo: "🔎",
+    category: "search",
+    shortDesc: "Kimi内置的AI搜索功能，可以联网搜索最新信息并整理答案。免费、中文友好、支持追问。国内直接用。",
+    howToUse: [
+      "打开kimi.moonshot.cn或用APP",
+      "在对话框输入问题（加「搜索」二字更精准）",
+      "Kimi联网搜索，给出结构化答案",
+      "可追问深入了解",
+      "所有功能免费，无需翻墙"
+    ],
+    price: "免费",
+    isDomestic: true,
+    tags: ["AI搜索", "联网搜索", "国产免费"]
+  },
+  {
+    id: "feixiaohao",
+    name: "跃问",
+    website: "https://yuewen.cn",
+    logo: "❓",
+    category: "search",
+    shortDesc: "国产AI搜索工具，联网搜索+信息整理+深度分析。免费使用，中文回答质量高，适合查新闻、找资料。",
+    howToUse: [
+      "打开yuewen.cn，点击「AI搜索」",
+      "输入搜索问题",
+      "AI联网搜索并整理答案",
+      "点击来源链接查看原文",
+      "免费使用"
+    ],
+    price: "免费",
+    isDomestic: true,
+    tags: ["AI搜索", "国产", "联网搜索"]
+  },
+
+  // ========== 开发工具-更多 ==========
+  {
+    id: "bolt-new",
+    name: "Bolt.new",
+    website: "https://bolt.new",
+    logo: "⚡",
+    category: "dev",
+    shortDesc: "AI全栈开发工具，用自然语言描述你要做的网站或应用，AI自动生成完整代码并部署上线。浏览器里完成，无需本地环境。",
+    howToUse: [
+      "打开bolt.new，用GitHub账号登录",
+      "输入想要做的网站或应用描述",
+      "AI生成完整前端代码",
+      "在右侧预览窗口实时查看效果",
+      "可修改代码，AI自动更新",
+      "一键部署到Netlify"
+    ],
+    price: "免费",
+    isDomestic: false,
+    highlight: true,
+    tags: ["AI编程", "网站生成", "全栈开发", "免费"]
+  },
+  {
+    id: "lovable",
+    name: "Lovable",
+    website: "https://lovable.dev",
+    logo: "💖",
+    category: "dev",
+    shortDesc: "输入产品描述，AI生成完整的可交互网站。前后端代码都有，支持发布。完全免费，适合做MVP和原型。",
+    howToUse: [
+      "打开lovable.dev，用GitHub登录",
+      "描述你想要的产品（网站/App）",
+      "AI生成完整前端代码，可交互预览",
+      "用自然语言要求修改",
+      "一键发布到生产环境"
+    ],
+    price: "免费",
+    isDomestic: false,
+    tags: ["AI编程", "网站生成", "MVP", "原型"]
+  },
+  {
+    id: "vercel-ai",
+    name: "Vercel AI SDK",
+    website: "https://sdk.vercel.ai",
+    logo: "▲",
+    category: "dev",
+    shortDesc: "Vercel出品的AI开发SDK，用几行代码就能给自己的网站加上AI对话功能。支持GPT-4、Claude等主流大模型。",
+    howToUse: [
+      "安装SDK：npm install ai",
+      "导入SDK到Next.js项目",
+      "添加API路由处理AI请求",
+      "用React/Vue组件显示对话界面",
+      "配置API Key即可使用"
+    ],
+    price: "开源免费",
+    isDomestic: false,
+    tags: ["AI开发", "SDK", "Next.js", "开源"]
+  },
+
+  // ========== 写作助手-更多 ==========
+  {
+    id: "jina-writer",
+    name: "Jina Chatwriter",
+    website: "https://writer.jina.ai",
+    logo: "✍️",
+    category: "writing",
+    shortDesc: "AI写作助手，支持200+种写作模板。输入要点，AI帮你写文章、帖子、邮件、报告。中文支持好，完全免费。",
+    howToUse: [
+      "打开writer.jina.ai，免费使用",
+      "选择写作模板（文章/邮件/社交帖子等）",
+      "输入写作要点和关键词",
+      "AI生成完整内容",
+      "复制到目标平台使用"
+    ],
+    price: "免费",
+    isDomestic: false,
+    tags: ["AI写作", "模板", "免费", "多场景"]
+  },
+  {
+    id: "yiyan",
+    name: "文心一言（百度）",
+    website: "https://yiyan.baidu.com",
+    downloadUrl: "https://yiyan.baidu.com",
+    appStoreUrl: "https://apps.apple.com/app/文心一言/id6443830496",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.baidu.aitask",
+    logo: "📝",
+    category: "writing",
+    shortDesc: "百度出品国产AI，中文理解能力强，擅长文案创作、知识问答。免费使用，百度账号直接登录。",
+    howToUse: [
+      "用百度账号登录yiyan.baidu.com",
+      "在对话框输入问题或写作需求",
+      "可上传图片让AI分析",
+      "支持生成图片（文生图）",
+      "APP体验流畅，免费使用"
+    ],
+    price: "免费",
+    isDomestic: true,
+    tags: ["AI对话", "文案创作", "免费", "国产"]
+  },
+
+  // ========== 办公效率-更多 ==========
+  {
+    id: "mindshow",
+    name: "MindShow",
+    website: "https://mindshow.fun",
+    logo: "🧠",
+    category: "office",
+    shortDesc: "输入大纲或文字，AI自动生成PPT幻灯片。支持Markdown格式，生成速度快，完全免费。适合快速做演示。",
+    howToUse: [
+      "打开mindshow.fun，免费注册",
+      "输入PPT大纲或粘贴文字",
+      "AI自动生成幻灯片",
+      "可切换不同模板风格",
+      "导出PPTX格式到本地"
+    ],
+    price: "免费",
+    isDomestic: true,
+    tags: ["PPT", "大纲生成", "免费", "Markdown"]
+  },
+  {
+    id: "wondercraft",
+    name: "Wondercraft",
+    website: "https://wondercraft.ai",
+    logo: "🎙️",
+    category: "office",
+    shortDesc: "AI播客制作工具，输入文字脚本，AI生成多个AI主播声音，生成播客音频。适合做知识分享、个人品牌。",
+    howToUse: [
+      "注册Wondercraft账号",
+      "粘贴播客文字脚本",
+      "选择AI主播声音",
+      "生成播客音频",
+      "导出MP3发布到各平台"
+    ],
+    price: "部分免费",
+    isDomestic: false,
+    tags: ["播客", "AI音频", "知识分享"]
+  },
+  {
+    id: "tome",
+    name: "Tome",
+    website: "https://tome.app",
+    logo: "📖",
+    category: "office",
+    shortDesc: "AI演示文稿工具，输入主题，AI生成完整演示故事。风格现代优雅，特别适合做产品介绍、商业计划。",
+    howToUse: [
+      "打开tome.app，用Gmail注册",
+      "输入演示主题或粘贴内容",
+      "AI生成完整演示故事（幻灯片组）",
+      "可嵌入视频、图片、3D模型",
+      "分享链接或导出PDF"
+    ],
+    price: "部分免费",
+    isDomestic: false,
+    tags: ["演示文稿", "AI生成", "产品介绍"]
+  },
+
+  // ========== 设计Logo ==========
+  {
+    id: "brandmark",
+    name: "Brandmark",
+    website: "https://brandmark.io",
+    logo: "🏷️",
+    category: "design",
+    shortDesc: "免费AI Logo制作工具，输入公司名和关键词，AI生成Logo、配色方案、字体搭配。一次搞定品牌全套视觉。",
+    howToUse: [
+      "打开brandmark.io，输入公司/品牌名称",
+      "输入3-5个关键词描述你的业务",
+      "选择喜欢的颜色偏好",
+      "AI生成Logo+配色+字体全套方案",
+      "下载各种格式"
+    ],
+    price: "免费",
+    isDomestic: false,
+    tags: ["Logo", "品牌设计", "免费", "配色"]
+  },
+  {
+    id: "hailuo",
+    name: "海螺AI",
+    website: "https://hailuoai.video",
+    logo: "🐚",
+    category: "video",
+    shortDesc: "MiniMax出品，免费AI视频生成工具，支持文生视频、图生视频。中文界面友好，生成速度快，适合短视频创作。",
+    howToUse: [
+      "打开hailuoai.video，注册登录",
+      "选择「文生视频」或「图生视频」",
+      "输入中文描述",
+      "选择视频风格和时长",
+      "等待生成，下载MP4"
+    ],
+    price: "免费",
+    isDomestic: true,
+    tags: ["AI视频", "国产", "文生视频", "免费"]
+  },
+
+  // ========== 通用提示词 ==========
+  {
+    id: "promptport",
+    name: "PromptPort",
+    website: "https://promptport.ai",
+    logo: "💡",
+    category: "productivity",
+    shortDesc: "AI提示词超市，收录了10000+高质量提示词模板。涵盖写作、编程、设计、营销等场景。复制即可用，提升AI输出质量。",
+    howToUse: [
+      "打开promptport.ai，浏览各类提示词",
+      "找到适合你的场景（如：写小说、做数据分析）",
+      "复制提示词模板",
+      "粘贴到ChatGPT/Kimi等AI工具中使用",
+      "根据需要微调参数"
+    ],
+    price: "免费",
+    isDomestic: true,
+    tags: ["提示词", "模板", "AI使用技巧"]
+  },
+
+  // ========== 翻译工具 ==========
+  {
+    id: "deepl",
+    name: "DeepL",
+    website: "https://www.deepl.com",
+    downloadUrl: "https://www.deepl.com/app",
+    appStoreUrl: "https://apps.apple.com/app/deepl-translator/id1260632895",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.deepl.mobile.app",
+    logo: "🌍",
+    category: "writing",
+    shortDesc: "全球最准的AI翻译工具，翻译质量碾压Google翻译。支持40+种语言，文档翻译免费。中英互译质量极佳。",
+    howToUse: [
+      "打开deepl.com，直接粘贴文字翻译",
+      "支持整篇文档翻译（Word/PPT/PDF）",
+      "免费用户每月5000字符",
+      "下载APP随时翻译",
+      "浏览器插件划词翻译"
+    ],
+    price: "部分免费",
+    isDomestic: false,
+    tags: ["翻译", "文档翻译", "高质量"]
+  },
+
+  // ========== 生活休闲 ==========
+  {
+    id: "myexample",
+    name: "我的简历",
+    website: "https://resume.rishun.site",
+    logo: "📄",
+    category: "productivity",
+    shortDesc: "AI简历生成器，输入基本信息，AI帮你写专业简历。支持多模板，中英文简历一键生成。找工作必备。",
+    howToUse: [
+      "打开网站，输入基本信息",
+      "选择想要的简历模板",
+      "AI优化简历内容",
+      "预览并下载PDF",
+      "支持中英文简历"
+    ],
+    price: "免费",
+    isDomestic: true,
+    tags: ["简历", "求职", "AI优化"]
+  },
+  {
+    id: "aibrillian",
+    name: "AI简历优化",
+    website: "https://cv.aibrillian.com",
+    logo: "✨",
+    category: "productivity",
+    shortDesc: "上传你的简历，AI帮你分析问题、优化内容、突出亮点。提高面试邀请率，适合求职者。",
+    howToUse: [
+      "打开网站，上传简历文件",
+      "AI分析简历并指出问题",
+      "针对每个问题给出优化建议",
+      "按建议修改简历内容",
+      "导出优化后的简历"
+    ],
+    price: "部分免费",
+    isDomestic: true,
+    tags: ["简历优化", "求职", "AI分析"]
+  },
 ];
+
 
 // 获取工具（可选分类）
 export function getToolsByCategory(categoryId: string) {
